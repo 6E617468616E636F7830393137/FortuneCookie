@@ -1,0 +1,45 @@
+﻿@model ClickCounterApp.WebModels.Fortune.Messages
+@{
+    ViewBag.Title = "Fortune Seeker";
+}
+
+<h2>Fortune Seeker</h2>
+<hr />
+<div id="Fortune">
+    <div class="row" id="Author">
+        <div id="ForuneId" hidden>@Html.DisplayFor(modelItem => modelItem.Id)</div>
+        <div class="col-lg-5 col-md-5 col-sm-5" id="ForuneAuthor"><h3>@Html.DisplayFor(modelItem => modelItem.Type)</h3></div>
+        <div class="col-lg-7 col-md-7 col-sm-7">&nbsp;</div>
+    </div>
+    <div class="row" id="Message">
+        <div class="col-lg-6 col-md-6 col-sm-6" id="FortoneMessage">@Html.DisplayFor(modelItem => modelItem.Message)</div>
+        <div class="col-lg-6 col-md-6 col-sm-6">&nbsp;</div>
+    </div>
+</div>
+<br />
+<div class="row" style="position:fixed;  top:350px;">
+    <div class="col-lg-5 col-md-5 col-sm-5">
+        <button type="button" id="post-button" class="btn btn-primary btn-sm" >Next Fortune</button>
+    </div>
+</div>
+<script type="text/javascript">
+$('#post-button').on('click', function () {
+
+    var json = JSON.stringify({ Id: $("#ForuneId").text() });
+    $('#Fortune').html("<div class='col-lg-6 col-md-6 col-sm-6'><h3>Loading...</h3></div><br /><br /><br /><br />");
+    $('#Message').html("");
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("Message", "FortuneSeeker")',
+        contentType: 'application/json; charset=utf-8',
+        data: json,
+        success: function (data) {
+            $('#Fortune').html(data);
+        },
+        error: function() {
+            $('#Fortune').html("<div class='col-lg-6 col-md-6 col-sm-6'>Something's Wrong!</div><br /><br /><br /><br />");
+        }
+    });
+    return false
+});
+</script>

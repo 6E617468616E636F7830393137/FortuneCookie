@@ -1,0 +1,19 @@
+﻿@if (ClickCounterApp.WebModels.Fortune.Session.NextPrevPage == null || Convert.ToInt32(ClickCounterApp.WebModels.Fortune.Session.NextPrevPage) <= 1)
+{
+    <button type="button" class="btn btn-primary btn-xs" disabled>Prev</button>
+}
+else
+{
+    <button id="PrevButton" type="button" class="btn btn-primary btn-xs">Prev</button>
+    //@Html.ActionLink("Prev", "Prev", "Fortunes", null, new { @class = "btn btn-primary btn-xs" });
+}
+        |
+@if (Convert.ToInt32(ClickCounterApp.WebModels.Fortune.Session.NextPrevPage) >= Convert.ToInt32(System.Web.HttpContext.Current.Session["pageTotal"]))
+{
+    <button type="button" class="btn btn-primary btn-xs" disabled>Next</button>
+}
+else
+{
+    <button id="NextButton" type="button" class="btn btn-primary btn-xs">Next</button>
+    //@Html.ActionLink("Next", "Next", "Fortunes", null, new { @class = "btn btn-primary btn-xs" });
+}

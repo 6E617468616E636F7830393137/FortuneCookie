@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Fortunes</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container body-content">
+        <h2>List of Fortunes</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">@Html.ActionLink(" Add Fortune", "Create", "Fortunes", null, new { @class = "btn btn-primary btn-lg" })</div>
+            <div class="col-lg-5 col-md-5 col-sm-5" style="display:table-cell; vertical-align:middle; margin-top:12px; text-align:center">
+                Sort By: <select id="orderSelect" class="selectpicker" data-style="btn-primary">
+                    <option>Descending</option>
+                    <option>Ascending</option>
+                </select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">&nbsp;</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">&nbsp;</div>
+        </div>
+        <div id="grid" class="row">
+            @RenderBody()
+        </div>        
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ASP.NET MVC Fortunes by Nathan Cox</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+            @*var json = JSON.stringify({Data:($('#orderSelect').val() == 'Descending') ? '1' : '0' });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("OrderSelect", "Fortunes")',
+                contentType: 'application/json; charset=utf-8',
+                data:json,
+                success: function (data)
+                {
+                    $('#grid').html(data);
+                },
+                error: function ()
+                {
+                    alert("Error with data : " + json);
+                }
+
+            });*@
+
+        $('#PrevButton').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Prev", "Fortunes")',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data)
+                {
+                    $('#grid').html(data);
+                },
+                error: function ()
+                {
+                    alert("Error with data : " + json);
+                }
+
+            });
+            return true
+        });
+        $('#NextButton').on('click', function () {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Next", "Fortunes")',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data)
+                {
+                    $('#grid').html(data);
+                },
+                error: function ()
+                {
+                    alert("Error with data : " + json);
+                }
+
+            });
+            return true
+        });
+        $('#orderSelect').on('change', function () {
+            var json = JSON.stringify({Data:($('#orderSelect').val() == 'Descending') ? '1' : '0' });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("OrderSelect", "Fortunes")',
+                contentType: 'application/json; charset=utf-8',
+                data:json,
+                success: function (data)
+                {
+                    $('#grid').html(data);
+                },
+                error: function ()
+                {
+                    alert("Error with data : " + json);
+                }
+
+            });
+            return true
+        });
+    </script>
+</body>
+</html>

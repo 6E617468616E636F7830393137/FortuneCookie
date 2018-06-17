@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "FortunesLayout";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="icon" href="@Url.Content("~/favicon.ico")" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Fortunes</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container body-content" >
+        @RenderBody()
+        
+        <footer style="position:fixed;  top:400px;">
+            <hr />
+            <p>&copy; @DateTime.Now.Year - ASP.NET MVC Fortune Seeker by Nathan Cox</p>
+        </footer>
+    </div>
+
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

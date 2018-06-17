@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:background="#000000"
+        android:layout_centerInParent="false">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:minHeight="200dp"
+            android:background="#000000"
+            android:layout_centerInParent="false"
+            android:scaleX="0.80">
+            <TextView
+                android:id="@+id/fortuneTextAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:text=""
+                android:scaleY=".8"
+                android:background="#000000" />
+            <TextView
+                android:id="@+id/fortuneTextQuote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:text=""
+                android:scaleY=".8"
+                android:background="#000000" />
+            <TextView
+                android:id="@+id/fortuneTextSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="25dp"
+                android:text="\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+                android:scaleX="0.80"
+                android:scaleY="0.80"
+                android:background="#000000" />
+        </LinearLayout>
+    </RelativeLayout>
+<!--<RelativeLayout
+        android:orientation="vertical"
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="200dp"
+        android:minHeight="200dp"
+        android:background="#000000"
+        android:layout_centerInParent="false">
+        <TextView
+            android:id="@+id/fortuneTextSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:text=""
+            android:scaleX="0.80"
+            android:scaleY="0.80" />
+    </RelativeLayout>-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/buttonWrapper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/fortuneText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="Created By Nathan Cox \r\n@www.thecomputerscientist.net\r\n\r\n\r\n\r\n"
+            android:scaleX="0.80"
+            android:scaleY="0.80"
+            android:background="#000000" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/buttonWrapper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#000000">
+        <Button
+            android:text="Next Fortune"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/button1"
+            android:contextClickable="false" />
+    </LinearLayout>
+</RelativeLayout>
