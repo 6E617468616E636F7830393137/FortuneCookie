@@ -22,24 +22,53 @@ namespace ClickCounterApp.Api.Controllers
         //[Route("api/Update")]
         [Route("api/Random")]
         [HttpGet]
-        public IHttpActionResult Random()
+        public IHttpActionResult Random(int id)
+        {
+            int interator = 0;
+            var count = new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetEntryCount();
+            if (id == 0 )
+            {
+                Random random = new System.Random();
+                interator = random.Next(1, count + 1);
+            }
+            else
+            {
+                interator = id % count;
+            }
+            
+            return Ok(new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetById(interator));
+        }
+        [Route("api/Random")]
+        [HttpPost]
+        public IHttpActionResult PostRandom()
+        {
+            Random random = new System.Random();
+            var count = new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetEntryCount();
+            int interator = 0;           
+
+            interator = random.Next(1, count + 1);            
+            return Ok(new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetById(interator));
+        }
+        [Route("api/Random")]
+        [HttpPut]
+        public IHttpActionResult PutRandom()
         {
             Random random = new System.Random();
             var count = new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetEntryCount();
             int interator = 0;
-            //Log.Debug($"Generating Random Value - Count = {count}");
-            //int current = 0;
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    do {
-                    
-            interator = random.Next(1, count+1);
-            //    }
-            //    while (interator == current);
-            //    current = interator;
-            //    Log.Debug($"Next Random = {interator}");
-            //}
-            //Log.Debug($"Generating Random Value - Random Value = {count}");
+
+            interator = random.Next(1, count + 1);
+            return Ok(new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetById(interator));
+        }
+        [Route("api/Random")]
+        [HttpPatch]
+        public IHttpActionResult PatchRandom()
+        {
+            Random random = new System.Random();
+            var count = new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetEntryCount();
+            int interator = 0;
+
+            interator = random.Next(1, count + 1);
             return Ok(new Business.UnitOfWork.GenericRequest<Messages>(new Business.UnitOfWork.Transaction<Messages>.ExecuteDb()).GetById(interator));
         }
     }
