@@ -12,7 +12,7 @@ namespace ClickCounterApp.Business.Download.Fortune.Transactions
     {
         internal WebModels.Fortune.Messages Execute(string previousId)
         {
-            string page = "http://www.thecomputerscientist.net/fortuneapi/api/random";
+            string page = "http://www.thecomputerscientist.net/fortuneapi/api/random?id=0";
             string currentId = "";
 
             using (HttpClient content = new HttpClient())

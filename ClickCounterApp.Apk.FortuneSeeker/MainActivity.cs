@@ -44,7 +44,7 @@ namespace ClickCounterApp.Apk.FortuneSeeker
         }
         WebModels.Fortune.Messages DownloadPage()
         {
-            string page = "http://www.thecomputerscientist.net/fortuneapi/api/random";
+            string page = "http://www.thecomputerscientist.net/fortuneapi/api/random?id=0";
 
             try
             {
